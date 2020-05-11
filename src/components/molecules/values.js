@@ -25,7 +25,8 @@ const linkItemData = [
 
 const useStyles = makeStyles((theme) => ({
     values: {
-        padding: "5rem 0"
+        padding: "5rem 0",
+        backgroundColor: "white",
     },
     valuesItem: {
         color: "#222222",
@@ -37,7 +38,7 @@ const Values = () => {
     return(
         <Box className={classes.values}>
             <Container fixed>
-                <Grid container className="values" spacing={3}>
+                <Grid container spacing={3}>
                     {linkItemData.map( item => {
                         return(
                             <Grid key={item.id} item xs={12} sm={4}>

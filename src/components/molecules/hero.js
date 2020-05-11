@@ -4,6 +4,8 @@ import { Button, Typography, Box, makeStyles, Container } from '@material-ui/cor
 const useStyles = makeStyles((theme) => ({
     hero: {
         backgroundImage:"url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
         position: "relative",
         "&::before": {
             position: "absolute",
@@ -12,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
             left: "0",
             right: "0",
             bottom: "0",
-            backgroundColor: "rgba(0,0,0,0.33)",
+            backgroundColor: "rgba(0,0,0,0.5)",
         },
     },
     heroItem:{

@@ -41,7 +41,7 @@ const Sectors = () => {
             <Container fixed>
                 <Box display="flex" flexDirection="column" alignItems="center" margin="0 0 2.5rem" className={classes.sectorWrapper}>
                     <Typography className={classes.sectorItem} variant="h3">Our Capturing Market Sectors</Typography>
-                    <Typography className={classes.sectorItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system..</Typography>
+                    <Typography className={classes.sectorItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system.</Typography>
                 </Box>
                 <Grid container spacing={3}>
                     <Grid item sm={12} md={4} className={classes.sectorWrapper}>
