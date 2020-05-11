@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/amd-automation/static/js/main.68056be3.chunk.js",
-    "main.js.map": "/amd-automation/static/js/main.68056be3.chunk.js.map",
+    "main.js": "/amd-automation/static/js/main.e0c2191c.chunk.js",
+    "main.js.map": "/amd-automation/static/js/main.e0c2191c.chunk.js.map",
     "runtime-main.js": "/amd-automation/static/js/runtime-main.d2e81722.js",
     "runtime-main.js.map": "/amd-automation/static/js/runtime-main.d2e81722.js.map",
-    "static/js/2.848ea67f.chunk.js": "/amd-automation/static/js/2.848ea67f.chunk.js",
-    "static/js/2.848ea67f.chunk.js.map": "/amd-automation/static/js/2.848ea67f.chunk.js.map",
+    "static/js/2.1cb43a36.chunk.js": "/amd-automation/static/js/2.1cb43a36.chunk.js",
+    "static/js/2.1cb43a36.chunk.js.map": "/amd-automation/static/js/2.1cb43a36.chunk.js.map",
     "index.html": "/amd-automation/index.html",
-    "precache-manifest.10fb5eb83e977d4d68271088d3567529.js": "/amd-automation/precache-manifest.10fb5eb83e977d4d68271088d3567529.js",
+    "precache-manifest.154ad12bd439f0b1b9f01af44dfc1dbb.js": "/amd-automation/precache-manifest.154ad12bd439f0b1b9f01af44dfc1dbb.js",
     "service-worker.js": "/amd-automation/service-worker.js",
-    "static/js/2.848ea67f.chunk.js.LICENSE.txt": "/amd-automation/static/js/2.848ea67f.chunk.js.LICENSE.txt"
+    "static/js/2.1cb43a36.chunk.js.LICENSE.txt": "/amd-automation/static/js/2.1cb43a36.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d2e81722.js",
-    "static/js/2.848ea67f.chunk.js",
-    "static/js/main.68056be3.chunk.js"
+    "static/js/2.1cb43a36.chunk.js",
+    "static/js/main.e0c2191c.chunk.js"
   ]
 }
