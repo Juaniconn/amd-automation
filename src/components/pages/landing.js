@@ -7,6 +7,9 @@ import Video from  './../molecules/video'
 import Sectors from  './../molecules/sectors'
 import Statistics from  './../molecules/statistics'
 import Gallery from  './../molecules/gallery'
+import Feedback from './../molecules/feedback'
+
+import { Divider } from '@material-ui/core'
 
 const Landing = () => {
     return (
@@ -18,6 +21,8 @@ const Landing = () => {
             <Sectors/>
             <Statistics/>
             <Gallery/>
+            <Divider/>
+            <Feedback/>
         </>
     )
 }
