@@ -1,23 +1,19 @@
 {
   "files": {
-    "main.css": "/amd-automation/static/css/main.5f361e03.chunk.css",
-    "main.js": "/amd-automation/static/js/main.610ada62.chunk.js",
-    "main.js.map": "/amd-automation/static/js/main.610ada62.chunk.js.map",
+    "main.js": "/amd-automation/static/js/main.68056be3.chunk.js",
+    "main.js.map": "/amd-automation/static/js/main.68056be3.chunk.js.map",
     "runtime-main.js": "/amd-automation/static/js/runtime-main.d2e81722.js",
     "runtime-main.js.map": "/amd-automation/static/js/runtime-main.d2e81722.js.map",
-    "static/js/2.6941dce8.chunk.js": "/amd-automation/static/js/2.6941dce8.chunk.js",
-    "static/js/2.6941dce8.chunk.js.map": "/amd-automation/static/js/2.6941dce8.chunk.js.map",
+    "static/js/2.848ea67f.chunk.js": "/amd-automation/static/js/2.848ea67f.chunk.js",
+    "static/js/2.848ea67f.chunk.js.map": "/amd-automation/static/js/2.848ea67f.chunk.js.map",
     "index.html": "/amd-automation/index.html",
-    "precache-manifest.ef8ff9cc9642d684febcac35ffa1949d.js": "/amd-automation/precache-manifest.ef8ff9cc9642d684febcac35ffa1949d.js",
+    "precache-manifest.10fb5eb83e977d4d68271088d3567529.js": "/amd-automation/precache-manifest.10fb5eb83e977d4d68271088d3567529.js",
     "service-worker.js": "/amd-automation/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/amd-automation/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.6941dce8.chunk.js.LICENSE.txt": "/amd-automation/static/js/2.6941dce8.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/amd-automation/static/media/logo.5d5d9eef.svg"
+    "static/js/2.848ea67f.chunk.js.LICENSE.txt": "/amd-automation/static/js/2.848ea67f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d2e81722.js",
-    "static/js/2.6941dce8.chunk.js",
-    "static/css/main.5f361e03.chunk.css",
-    "static/js/main.610ada62.chunk.js"
+    "static/js/2.848ea67f.chunk.js",
+    "static/js/main.68056be3.chunk.js"
   ]
 }
