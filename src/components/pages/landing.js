@@ -8,8 +8,8 @@ import Sectors from  './../molecules/sectors'
 import Statistics from  './../molecules/statistics'
 import Gallery from  './../molecules/gallery'
 import Feedback from './../molecules/feedback'
-
-import { Divider } from '@material-ui/core'
+import Blog from './../molecules/blog'
+import Footer from './../molecules/footer'
 
 const Landing = () => {
     return (
@@ -21,8 +21,9 @@ const Landing = () => {
             <Sectors/>
             <Statistics/>
             <Gallery/>
-            <Divider/>
             <Feedback/>
+            <Blog/>
+            <Footer/>
         </>
     )
 }

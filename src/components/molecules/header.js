@@ -62,7 +62,7 @@ const Header = () => {
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={9999}>
             <Container fixed>
                 <Box className={classes.headerWrapper} height="5rem"  display="flex" justifyContent="space-between" alignItems="center">
-                    <h1 style={{margin: "0"}}>Logo industrial</h1>
+                    <h1 style={{margin: "0"}}>Logo</h1>
                     <nav className={classes.nav}>
                         <ul className={classes.navList}>
                             {linkItemData.map( item => {

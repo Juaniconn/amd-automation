@@ -1,6 +1,29 @@
 import React from 'react';
 import { Box, Typography, Container, makeStyles } from '@material-ui/core'
 
+const linkItemData = [
+    { 
+        id: 1,
+        url: 'https://images.pexels.com/photos/2451568/pexels-photo-2451568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        gridColumn: true,
+    },
+    { 
+        id: 2,
+        url: 'https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        gridColumn: false,
+    },
+    { 
+        id: 3,
+        url: 'https://images.pexels.com/photos/3774042/pexels-photo-3774042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        gridColumn: false,
+    },
+    { 
+        id: 4,
+        url: 'https://images.pexels.com/photos/3182822/pexels-photo-3182822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+        gridColumn: true,
+    },
+]
+
 const useStyles = makeStyles((theme) => ({
     gallery: {
         padding: "5rem 0",
@@ -52,28 +75,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const linkItemData = [
-    { 
-        id: 1,
-        url: 'https://images.pexels.com/photos/2451568/pexels-photo-2451568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        gridColumn: true,
-    },
-    { 
-        id: 2,
-        url: 'https://images.pexels.com/photos/3183198/pexels-photo-3183198.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        gridColumn: false,
-    },
-    { 
-        id: 3,
-        url: 'https://images.pexels.com/photos/3774042/pexels-photo-3774042.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        gridColumn: false,
-    },
-    { 
-        id: 4,
-        url: 'https://images.pexels.com/photos/3182822/pexels-photo-3182822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-        gridColumn: true,
-    },
-]
 
 const Gallery = () => {
     const classes = useStyles();
