@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link, makeStyles, Box, Container } from "@material-ui/core"
+import { withRouter } from 'react-router-dom'
 
 const linkItemData = [
     { 
         id: 1,
         name: 'Home',
-        link: 'home'
+        link: '/'
     },
     { 
         id: 2,
         name: 'About',
-        link: 'about'
+        link: '/about'
     },
     { 
         id: 3,
@@ -50,13 +51,14 @@ const useStyles = makeStyles((theme) => ({
     navListItem: {
         padding: "2rem 1rem",
         fontSize: "1rem",
+        cursor: "pointer",
         '&:hover': {
             textDecoration: "none",
         },
     },
 }));
 
-const Header = () => {
+const Header = (props) => {
     const classes = useStyles();
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={9999}>
@@ -67,7 +69,7 @@ const Header = () => {
                         <ul className={classes.navList}>
                             {linkItemData.map( item => {
                                 return (
-                                    <li key={ item.id } style={{listStyle: "none"}}><Link href={`${ item.link }`} className={classes.navListItem}>{ item.name }</Link></li>
+                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={() => props.history.push(item.link)} className={classes.navListItem}>{ item.name }</Link></li>
                                 )
                             })}
                         </ul>
@@ -78,6 +80,6 @@ const Header = () => {
     )
 }
 
-export default Header
+export default withRouter(Header)
 
 

@@ -9,7 +9,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 const useStyles = makeStyles((theme) => ({
     footer: {
         padding: "5rem 0",
-        // backgroundImage:"url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
+        backgroundImage:"url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
         backgroundPosition: "center center",
         backgroundSize: "cover",
         position: "relative",

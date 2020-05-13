@@ -25,16 +25,16 @@ const linkItemData = [
 ]
 
 const useStyles = makeStyles((theme) => ({
-    gallery: {
+    projects: {
         padding: "5rem 0",
         backgroundColor: "white",
     },
-    galleryWrapper: {
+    projectsWrapper: {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(18rem, 1fr))",
         gap: "2rem",
     },
-    galleryItemImage: {
+    projectsItemImage: {
         width: "100%",
         height: "20rem",
         objectFit: "cover",
@@ -59,36 +59,36 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "rgba(255,255,255,0.2)",
         }
     },
-    galleryItemImageA: {
+    projectsItemImageA: {
         gridColumn:"span 2",
         [theme.breakpoints.down('sm')]: {
             gridColumn:"span 1",
         },
     },
-    galleryItemTitle: {
+    projectsItemTitle: {
         margin: "0.5rem 0",
         color: "#222222",
     },
-    galleryItemSubTitle: {
+    projectsItemSubTitle: {
         margin: "0.5rem 0",
         color: "#777",
     }
 }));
 
 
-const Gallery = () => {
+const Projects = () => {
     const classes = useStyles();
     return(
-        <Box className={classes.gallery}>
+        <Box className={classes.projects}>
             <Container fixed>
                 <Box display="flex" flexDirection="column" alignItems="center" margin="0 0 2.5rem" textAlign="center">
-                    <Typography className={classes.galleryItemTitle} variant="h3">Latest Finished Projects</Typography>
-                    <Typography className={classes.galleryItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system.</Typography>
+                    <Typography className={classes.projectsItemTitle} variant="h3">Latest Finished Projects</Typography>
+                    <Typography className={classes.projectsItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system.</Typography>
                 </Box>
-                <Box className={classes.galleryWrapper}>
+                <Box className={classes.projectsWrapper}>
                     {linkItemData.map( item => {
                         return(
-                            <figure key={item.id} className={`${classes.galleryItemImage} ${item.gridColumn ? classes.galleryItemImageA : null}`} >
+                            <figure key={item.id} className={`${classes.projectsItemImage} ${item.gridColumn ? classes.projectsItemImageA : null}`} >
                                 <img width="100%" height="100%" style={{objectFit: 'cover'}} src={item.url}  alt=""/>
                             </figure>
                         )
@@ -99,4 +99,4 @@ const Gallery = () => {
     )
 }
 
-export default Gallery
+export default Projects
