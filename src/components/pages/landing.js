@@ -1,13 +1,14 @@
 import React from 'react';
 
 import Hero from  './../molecules/hero'
-import Values from  './../molecules/values'
+import Services from  './../molecules/services'
 import Video from  './../molecules/video'
 import Sectors from  './../molecules/sectors'
 import Statistics from  './../molecules/statistics'
 import Projects from  './../molecules/projects'
 import Feedback from './../molecules/feedback'
 import Blog from './../molecules/blog'
+import Contact from './../molecules/contact'
 
 
 const Landing = (props) => {
@@ -20,7 +21,7 @@ const Landing = (props) => {
         },
         {
             id: 2,
-            item: <Values />,
+            item: <Services />,
             index: props.services ? props.services : null,
         },
         {
@@ -52,6 +53,11 @@ const Landing = (props) => {
             id: 8,
             item: <Blog />,
             index: props.blog ? props.blog : null,
+        },
+        {
+            id: 9,
+            item: <Contact />,
+            index: props.contact ? props.contact : null,
         },
     ]
 

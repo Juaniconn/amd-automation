@@ -47,13 +47,18 @@ const useStyles = makeStyles((theme) => ({
     navList: {
         display: "flex",
         padding: "0",
+        margin: "0",
     },
     navListItem: {
         padding: "2rem 1rem",
-        fontSize: "1rem",
+        display: "block",
+        fontSize: "0.8rem",
         cursor: "pointer",
+        color: "#222",
         '&:hover': {
             textDecoration: "none",
+            backgroundColor: "#fab700",
+            color: "white",
         },
     },
 }));
@@ -63,8 +68,8 @@ const Header = (props) => {
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={9999}>
             <Container fixed>
-                <Box className={classes.headerWrapper} height="5rem"  display="flex" justifyContent="space-between" alignItems="center">
-                    <h1 style={{margin: "0"}}>Logo</h1>
+                <Box className={classes.headerWrapper} display="flex" justifyContent="space-between" alignItems="center">
+                    <img onClick={() => props.history.push('/')} style={{cursor: 'pointer'}} src="https://raw.githubusercontent.com/ElJuanii00/AMD_Autoamtion/master/images_originals/amd_logo_transparent.png" width="140rem" alt=""/>
                     <nav className={classes.nav}>
                         <ul className={classes.navList}>
                             {linkItemData.map( item => {

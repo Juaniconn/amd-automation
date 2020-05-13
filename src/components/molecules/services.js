@@ -41,7 +41,7 @@ const Values = () => {
                 <Grid container spacing={3}>
                     {linkItemData.map( item => {
                         return(
-                            <Grid key={item.id} item xs={12} sm={4}>
+                            <Grid key={item.id} item xs={12} md={4}>
                                 <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
                                     {item.icon}
                                     <Typography className={classes.valuesItem} variant="h6">{item.title}</Typography>

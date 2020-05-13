@@ -30,7 +30,7 @@ const pages = [
     },
     {
       id: 5,
-      item: () => {return(<Landing />)},
+      item: () => {return(<Landing contact={1}/>)},
       path: 'contact'
     },
 ]

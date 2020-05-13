@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
         margin: "0.5rem 0",
         backgroundColor: "#fab700",
         color: "white",
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
+        },
         "&:hover": {
             backgroundColor: "#C08000",
         }
