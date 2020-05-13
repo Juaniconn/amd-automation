@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Box, Typography, Container, makeStyles, Button } from '@material-ui/core'
-import Youtube from 'react-youtube'
 
 const useStyles = makeStyles((theme) => ({
     video: {
@@ -34,15 +33,24 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "lighter",
     },
     videoItemYouTube: {
-        width: '100%',
-        [theme.breakpoints.down('xs')]: {
-            height: '15rem',
-        },
+        height: "0",
+        overflow: "hidden",
+        paddingBottom: "56.25%",
+        position: "relative",
+
+        "& iframe, & object, & embed": {
+            height: "100%",
+            left: "0",
+            position: "absolute",
+            top: "0",
+            width: "100%",
+        }
     },
 }));
 
 const Video = () => {
     const classes = useStyles();
+    
     return(
         <Box className={classes.video}>
             <Container fixed>
@@ -55,7 +63,10 @@ const Video = () => {
                         <div><Button className={classes.videoItemButton} variant="text">Get started</Button></div>
                     </Grid>
                     <Grid item sm={12} md={6} style={{width: "100%"}}>
-                        <Youtube videoId="kFdvebfJvMo" className={classes.videoItemYouTube}/>
+                        {/* <Youtube videoId="kFdvebfJvMo" className={classes.videoItemYouTube}/> */}
+                        <Box className={classes.videoItemYouTube}>
+                            <iframe title="1" src="https://www.youtube.com/embed/kFdvebfJvMo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
+                        </Box>
                     </Grid>
                 </Grid>
             </Container>

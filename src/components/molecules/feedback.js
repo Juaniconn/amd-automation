@@ -26,6 +26,9 @@ const linkItemData = [
 const useStyles = makeStyles((theme) => ({
     feedback: {
         padding: "5rem 0",
+    },
+    feedbackBackground: {
+        padding: "5rem 0",
         backgroundImage:"url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')",
         backgroundPosition: "center center",
         backgroundSize: "cover",
@@ -53,6 +56,19 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         fontWeight: "lighter",
     },
+    feedbackBackgroundItemTitle: {
+        margin: "0.5rem 0",
+        color: "#222",
+    },
+    feedbackBackgroundItemSubtitle: {
+        margin: "0.5rem 0",
+        color: "#222",
+    },
+    feedbackBackgroundItemBody: {
+        margin: "0.5rem 0",
+        color: "#777",
+        fontWeight: "lighter",
+    },
     feedbackWrapper: {
         position: "relative",
         [theme.breakpoints.down('xs')]: {
@@ -61,22 +77,23 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Feedback = () => {
+const Feedback = (props) => {
     const classes = useStyles();
+    console.log(props.feedbackBackground)
     return(
-        <Box className={classes.feedback}>
+        <Box className={props.feedbackBackground ? classes.feedbackBackground : classes.feedback}>
             <Container fixed>
                 <Box className={classes.feedbackWrapper} display="flex" flexDirection="column" alignItems="center" margin="0 0 2.5rem" textAlign="center">
-                    <Typography className={classes.feedbackItemTitle} variant="h3">Enjoy our Client’s Feedback</Typography>
-                    <Typography className={classes.feedbackItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system.</Typography>
+                    <Typography className={props.feedbackBackground ? classes.feedbackItemTitle : classes.feedbackBackgroundItemTitle} variant="h3">Enjoy our Client’s Feedback</Typography>
+                    <Typography className={props.feedbackBackground ? classes.feedbackItemSubtitle : classes.feedbackBackgroundItemSubtitle} variant="subtitle1">Who are in extremely love with eco friendly system.</Typography>
                 </Box>
                 <Grid container className={classes.feedbackWrapper} spacing={3}>
                     {linkItemData.map( item => {
                         return (
                             <Grid item key={item.id} xs={12} md={4}>
-                                <Typography className={classes.feedbackItemSubtitle} component="legend">{item.name}</Typography>
+                                <Typography className={props.feedbackBackground ? classes.feedbackItemSubtitle : classes.feedbackBackgroundItemSubtitle} component="legend">{item.name}</Typography>
                                 <Rating name="read-only" value={item.raiting} readOnly />
-                                <Typography className={classes.feedbackItemBody} variant="body1">{item.description}</Typography>
+                                <Typography className={props.feedbackBackground ? classes.feedbackItemBody : classes.feedbackBackgroundItemBody} variant="body1">{item.description}</Typography>
                             </Grid>
                         )
                     })}

@@ -6,7 +6,7 @@ const linkItemData = [
     { 
         id: 1,
         name: 'Home',
-        link: '/'
+        link: '/home'
     },
     { 
         id: 2,
@@ -16,17 +16,17 @@ const linkItemData = [
     { 
         id: 3,
         name: 'Service',
-        link: 'service'
+        link: '/services'
     },
     { 
         id: 4,
         name: 'Projects',
-        link: 'projects'
+        link: '/projects'
     },
     { 
         id: 5,
         name: 'Contact',
-        link: 'contact'
+        link: '/contact'
     },
 ]
 
@@ -69,7 +69,7 @@ const Header = (props) => {
                         <ul className={classes.navList}>
                             {linkItemData.map( item => {
                                 return (
-                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={() => props.history.push(item.link)} className={classes.navListItem}>{ item.name }</Link></li>
+                                    <li key={ item.id } style={{listStyle: "none"}}><Link href="" onClick={() => props.history.push(item.link)} className={classes.navListItem}>{ item.name }</Link></li>
                                 )
                             })}
                         </ul>

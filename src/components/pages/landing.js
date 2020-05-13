@@ -45,7 +45,7 @@ const Landing = (props) => {
         },
         {
             id: 7,
-            item: <Feedback />,
+            item: <Feedback feedbackBackground={props.feedbackBackground} />,
             index: props.feedback ? props.feedback : null,
         },
         {
