@@ -79,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Feedback = (props) => {
     const classes = useStyles();
-    console.log(props.feedbackBackground)
     return(
         <Box className={props.feedbackBackground ? classes.feedbackBackground : classes.feedback}>
             <Container fixed>

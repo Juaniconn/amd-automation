@@ -7,7 +7,8 @@ import Layout from './components/pages/layout'
 const App = () => {
   return (
     <Switch>
-      <Route exact path={`/:id`} component={Layout} />
+      <Route exact path={`/`} component={Layout} />
+      <Route path={`/:id`} component={Layout} />
     </Switch>
   )
 }

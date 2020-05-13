@@ -11,7 +11,7 @@ const pages = [
     {
       id: 1,
       item: () => {return(<Landing hero={1} services={2} video={3} sectors={4} statistics={5} projects={6} feedback={7} feedbackBackground={true} blog={8}/>)},
-      path: 'home',
+      path: undefined,
     },
     {
       id: 2,
@@ -37,11 +37,10 @@ const pages = [
 
 const Layout = () => {
     let { id } = useParams();
-    console.log(id)
     return (
         <>
             <Header/>
-                { id !== "home" ? <Breadcrumbs path={id} /> : null }
+                { id !== undefined ? <Breadcrumbs path={id} /> : null }
                 { pages.map( page => {
                     return(
                         <React.Fragment key={page.id}>
