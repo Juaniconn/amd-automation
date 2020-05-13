@@ -148,9 +148,9 @@ const Feedback = () => {
                         <form action="/" method="post">
                             <Grid container spacing={3}>
                                 <Grid item xs={12} md={6} className={classes.contactInfoItem}>
-                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%", marginBottom: "1.5rem"}} label="Enter your name" variant="outlined"></TextField>
-                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%", marginBottom: "1.5rem"}} label="Enter your address" variant="outlined"></TextField>
-                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%"}} label="Enter your subject" variant="outlined"></TextField>
+                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%", marginBottom: "1.5rem"}} label="Enter your name" variant="outlined" required></TextField>
+                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%", marginBottom: "1.5rem"}} label="Enter your address" variant="outlined" required></TextField>
+                                    <TextField className={classes.contactInfoItemTextfield} style={{width: "100%"}} label="Enter your subject" variant="outlined" required></TextField>
                                 </Grid>
                                 <Grid item xs={12} md={6}>
                                     <TextareaAutosize style={{width: "100%", padding: "1.5rem"}} rowsMin={10} placeholder="Message"></TextareaAutosize>

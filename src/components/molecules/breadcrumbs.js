@@ -34,7 +34,7 @@ const HeaderBreadcrumbs = (props) => {
         <Box className={classes.breadcrumbs}>
             <Container fixed>
                 <Breadcrumbs className={classes.breadcrumbsWrapper} aria-label="breadcrumb">
-                    <Link color="inherit" href="" onClick={() => props.history.push('/home')}>Home</Link>
+                    <Link color="inherit" href="" onClick={() => props.history.push('/')}>Home</Link>
                     <Typography style={{textTransform: 'capitalize'}} color="inherit">{props.path}</Typography>
                 </Breadcrumbs>
             </Container>
