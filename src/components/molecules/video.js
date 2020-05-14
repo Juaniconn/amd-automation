@@ -68,7 +68,7 @@ const Video = () => {
                     <Grid item sm={12} md={6} style={{width: "100%"}}>
                         {/* <Youtube videoId="kFdvebfJvMo" className={classes.videoItemYouTube}/> */}
                         <Box className={classes.videoItemYouTube}>
-                            <iframe title="1" src="https://www.youtube.com/embed/kFdvebfJvMo" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
+                            <iframe title="1" src="https://www.youtube.com/embed/KlPUz7pKbc0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
                         </Box>
                     </Grid>
                 </Grid>

@@ -3,34 +3,6 @@ import { Link, makeStyles, Box, Container, Drawer, Button } from "@material-ui/c
 import { withRouter } from 'react-router-dom'
 import MenuIcon from '@material-ui/icons/Menu';
 
-const linkItemData = [
-    { 
-        id: 1,
-        name: 'Home',
-        link: "/"
-    },
-    { 
-        id: 2,
-        name: 'About',
-        link: '/about'
-    },
-    { 
-        id: 3,
-        name: 'Service',
-        link: '/services'
-    },
-    { 
-        id: 4,
-        name: 'Projects',
-        link: '/projects'
-    },
-    { 
-        id: 5,
-        name: 'Contact',
-        link: '/contact'
-    },
-]
-
 const useStyles = makeStyles((theme) => ({
     header: {
         backgroundColor: "white",
@@ -58,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     navListItem: {
         padding: "2rem 1rem",
+        textTransform: "capitalize",
         display: "block",
         fontSize: "0.8rem",
         cursor: "pointer",
@@ -69,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.down('sm')]: {
             color: "white",
-            textAlign: "center",
+            textAlign: "start",
+            paddingLeft: "2rem",
         },
     },
     hamburgerButton: {
@@ -79,12 +53,12 @@ const useStyles = makeStyles((theme) => ({
             display: "flex",
         },
         "& .MuiDrawer-paperAnchorLeft": {
-            width: "12rem",
+            width: "15rem",
             [theme.breakpoints.down('sm')]: {
                 display: "flex",
                 justifyContent: "center",
             },
-            backgroundColor: "#111",
+            backgroundColor: "#0e0e0e",
         }
     },
     headerLogo: {
@@ -108,6 +82,8 @@ const Header = (props) => {
         setState({ ...state, [anchor]: open });
         props.history.push(item)
     };
+
+    console.log(props.pageList)
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={1000}>
             <Container fixed>
@@ -115,9 +91,9 @@ const Header = (props) => {
                     <img className={classes.headerLogo} onClick={() => props.history.push('/')} style={{cursor: 'pointer'}} src="https://raw.githubusercontent.com/ElJuanii00/AMD_Autoamtion/master/images_originals/amd_logo_transparent.png" alt=""/>
                     <nav className={classes.nav}>
                         <ul className={classes.navList}>
-                            {linkItemData.map( item => {
+                            {props.pageList.map( item => {
                                 return (
-                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={() => props.history.push(item.link)} className={classes.navListItem}>{ item.name }</Link></li>
+                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={() => props.history.push(item.index)} className={classes.navListItem}>{ item.index === '' ? 'Home' : (item.index) }</Link></li>
                                 )
                             })}
                         </ul>
@@ -125,9 +101,9 @@ const Header = (props) => {
                     <Button className={classes.hamburgerButton} style={{position: 'absolute', right: "0", color: '#222'}} onClick={toggleDrawer('left', true)}><MenuIcon></MenuIcon></Button>
                     <Drawer className={classes.hamburgerButton} anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)}>
                         <ul className={classes.navList}>
-                            {linkItemData.map( item => {
+                            {props.pageList.map( item => {
                                 return (
-                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={toggleDrawer('left', false, item.link)} className={classes.navListItem}>{ item.name }</Link></li>
+                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={toggleDrawer('left', false, item.index)} className={classes.navListItem}>{ item.index === '' ? 'Home' : (item.index) }</Link></li>
                                 )
                             })}
                         </ul>
