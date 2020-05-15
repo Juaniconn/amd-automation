@@ -83,7 +83,6 @@ const Header = (props) => {
         props.history.push(item)
     };
 
-    console.log(props.pageList)
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={1000}>
             <Container fixed>
