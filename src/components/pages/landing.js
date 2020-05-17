@@ -9,6 +9,7 @@ import Projects from  './../molecules/projects'
 import Feedback from './../molecules/feedback'
 import Blog from './../molecules/blog'
 import Contact from './../molecules/contact'
+import Shop from './../molecules/shop'
 
 
 const Landing = (props) => {
@@ -58,6 +59,11 @@ const Landing = (props) => {
             id: 9,
             item: <Contact />,
             index: props.contact ? props.contact : null,
+        },
+        {
+            id: 10,
+            item: <Shop onClick={props.onClick} />,
+            index: props.shop ? props.shop : null,
         },
     ]
 
