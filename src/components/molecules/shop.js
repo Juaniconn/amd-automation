@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Box, Typography, Container, makeStyles } from '@material-ui/core'
 import { useRouteMatch, Switch, Route } from 'react-router-dom'
-import { ProductMenu, ProductTopicWrapper } from './products'
+import { ProductMenu } from './products'
 
 const useStyles = makeStyles((theme) => ({
     shop: {
@@ -50,6 +50,19 @@ const useStyles = makeStyles((theme) => ({
     shopItemInfo: {
         padding: "1rem 0 0",
     },
+    shopItemInfoTypography: {
+        marginBottom: "1rem",
+    },
+    shopItemInfoButton: {
+        color: "white",
+        backgroundColor: "#fab700",
+        [theme.breakpoints.down('xs')]: {
+            width: "100%",
+        },
+        "&:hover": {
+            backgroundColor: "#C08000",
+        }
+    },
     shopItemTitle: {
         margin: "0.5rem 0",
         color: "#222222",
@@ -95,7 +108,15 @@ const useStyles = makeStyles((theme) => ({
     },
     shopCardDivider: {
         margin: "2rem 0"
-    }
+    },
+    shopCardItem: {
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gridGap:"2rem",
+        [theme.breakpoints.down('sm')]: {
+            gridTemplateColumns: "1fr",
+        },
+    },
 }));
 
 const linkItemData1 = [
@@ -289,16 +310,18 @@ const linkProductData = [
 const Shop = (props) => {
     const classes = useStyles()
     let match = useRouteMatch()
-
-    // console.log(match)
-
     return(
         <Box className={classes.shop}>
             <Container fixed>
                 <Box className={classes.shopWrapper}>
                     <Box>
-                        <Switch>
-                            { match.isExact ? <ProductMenu onClick={props.onClick} classes={classes} linkProductData={linkProductData} limit={4} /> : <Route exact path={`${match.path}/:topicId`}><ProductTopicWrapper onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route> }
+                        <Switch> 
+                            <Route exact path={`${match.path}`}><ProductMenu onClick={props.onClick} classes={classes} linkProductData={linkProductData} limit={4} /></Route>
+                            <Route exact path={`${match.path}/:topicId`}><ProductMenu onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route>
+                            <Route path={`${match.path}/:topicId/:productId`}><ProductMenu onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route>
+                            {/* <Route path={`${match.path}/:topicId/:productId`}><ProductTopicWrapper onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route> */}
+                            {/* { match.isExact ? <ProductMenu onClick={props.onClick} classes={classes} linkProductData={linkProductData} limit={4} /> : <Route path={`${match.path}/:topicId`}><ProductTopicWrapper onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route> } */}
+                            {/* <Route path={`${match.path}/:topicId`}><ProductTopicWrapper onClick={props.onClick} classes={classes} linkProductData={linkProductData} /></Route> */}
                         </Switch>
                     </Box>
                     <Box className={classes.shopSettingsWrapper}>
@@ -308,7 +331,7 @@ const Shop = (props) => {
                                 <ul className={classes.shopSettingsItemListWrapper}>
                                     { linkProductData.map(item => {
                                         return(
-                                            <li key={item.id}><Link className={classes.shopSettingsItemListItem} onClick={() => props.onClick(match.url, `${item.productTitle}`)}><Typography variant="body2" style={{textTransform: "capitalize"}}>{item.productTitle}</Typography></Link></li>
+                                            <li key={item.id}><Link className={classes.shopSettingsItemListItem} onClick={() => props.onClick(match.url, `/${item.productTitle}`)}><Typography variant="body2" style={{textTransform: "capitalize"}}>{item.productTitle}</Typography></Link></li>
                                         )
                                     }) }
                                 </ul>

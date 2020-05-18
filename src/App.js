@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Landing from './components/pages/landing'
 import Layout from './components/pages/layout'
 import StoreIcon from '@material-ui/icons/Store';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 // hero={1} services={2} video={3} sectors={4} statistics={5} projects={6} feedback={7} blog={8}
 
@@ -40,8 +41,14 @@ const pages = [
   {
     id: 7,
     index: 'tienda',
-    icon: <StoreIcon></StoreIcon>,
+    icon: <StoreIcon/>,
     item: (pageList, path, onClick) => {return(<Layout onClick={onClick} pageList={pageList} path={path} breadcrumbs={false}><Landing onClick={onClick} shop={1}/></Layout>)},
+  },
+  {
+    id: 8,
+    index: 'checkout',
+    icon: <ShoppingCartIcon/>,
+    item: () => null,
   },
 ]
 
@@ -50,38 +57,28 @@ class App extends Component {
   constructor(props) {
       super(props)
       this.state = {
-          url: null,
+          url: this.props.history.location.pathname,
       }
 
-      this.changeUrl = this.changeUrl.bind(this)
+      this.onClick = this.onClick.bind(this)
   }
 
-  changeUrl(match, url){
-      if(url === ""){
-        this.setState({
-            url: `${match}`,
-        })
-        this.props.history.push(`${match}`) 
-      } else{
-        this.setState({
-          url: `${match}/${url}`,
-      })
-        this.props.history.push(`${match}/${url}`) 
-      }
+    onClick(match, url){
+      this.props.history.push(`${match}${url}`) 
     }
     
     render(){
       return (
-      <Switch>
+        <Switch>
           { pages.map(page =>{
             return(
               page.id === 1 ?
                 <Route key={page.id} exact path={`/${page.index}`}>
-                  { page.item(pages, page.index, this.changeUrl) }
+                  { page.item(pages, page.index, this.onClick) }
                 </Route> 
                 : 
                 <Route key={page.id} path={`/${page.index}`}>
-                  { page.item(pages, page.index, this.changeUrl) }
+                  { page.item(pages, page.index, this.onClick) }
                 </Route>
               )
           })}
