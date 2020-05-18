@@ -8,6 +8,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import HomeIcon from '@material-ui/icons/Home';
 import EmailIcon from '@material-ui/icons/Email';
 
+const API_KEY = `${process.env.REACT_APP_GOOGLEMAPS_API_KEY}`
+
 const useStyles = makeStyles((theme) => ({
     contact: {
         padding: "5rem 0",
@@ -86,7 +88,7 @@ const Feedback = () => {
                     <Typography className={classes.contactItemSubtitle} variant="subtitle1">Follow the next steps to reach out our services</Typography>
                 </Box>
                 {/* <iframe className={classes.contactMap} title="1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.3401401148628!2d-106.44999617076185!3d31.733357939447586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e7595181c314c1%3A0x383f0457b82a4c36!2sRubio%20450%2C%20Nogales%20Nte.%2C%20Cd%20Ju%C3%A1rez%2C%20Chih.!5e0!3m2!1ses-419!2smx!4v1589342731812!5m2!1ses-419!2smx" frameBorder="0" style={{border: '0', margin: "0 0 2.5rem"}} allowFullScreen="" aria-hidden="false" tabIndex="0"></iframe> */}
-                <Box className={classes.contactMap} margin="0 0 2.5rem"><Map apiKey={process.env.REACT_APP_GOOGLEMAPS_API_KEY}/></Box>
+                <Box className={classes.contactMap} margin="0 0 2.5rem"><Map apiKey={API_KEY}/></Box>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={4} className={classes.contactInfoItem}> 
                         <Grid item container xs={12} spacing={1}>
