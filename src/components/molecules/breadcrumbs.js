@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderBreadcrumbs = (props) => {
     const classes = useStyles();
+    console.log(props.path)
     return (
         <Box className={classes.breadcrumbs}>
             <Container fixed>

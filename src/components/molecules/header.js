@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, makeStyles, Box, Container, Drawer, Button, IconButton, Divider, Grid, Typography } from "@material-ui/core"
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import { ShopContext } from "../context/shopContext"
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -71,9 +74,12 @@ const useStyles = makeStyles((theme) => ({
     checkoutDrawer: {
         "& .MuiDrawer-paperAnchorRight": {
             padding: "1.5rem 2.5rem",
-            width: "21rem",
+            width: "25rem",
             justifyContent: "flex-start",
             backgroundColor: "#0e0e0e",
+            [theme.breakpoints.down('sm')]: {
+                width: "100%",
+            },
         }
     },
     checkoutNavList: {
@@ -116,27 +122,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const linkItemData = [
-    { 
-        id: 1,
-        url: 'https://images-na.ssl-images-amazon.com/images/I/71K3-rYkPHL._UX466_.jpg',
-        titleProduct: "title-product-a-A",
-        descriptionProduct: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        priceProduct: "$100",
-    },
-    { 
-        id: 2,
-        url: 'https://images-na.ssl-images-amazon.com/images/I/71vKc2FPyrL._UX522_.jpg',
-        titleProduct: "title-product-a-B",
-        descriptionProduct: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        priceProduct: "$100",
-    },
-]
 
 const Header = (props) => {
     const classes = useStyles();
     const [stateLeft, setStateLeft] = React.useState({left: false});
     const [stateRight, setStateRight] = React.useState({right: false});
+    const { checkout, addItemToCheckout, removeItemToCheckout, isCartOpen, closeCart } = useContext(ShopContext)
+
     const toggleDrawer = (anchor, open, item) => (event) => {
         if (item !== undefined){
             if(item.index !== 'checkout'){
@@ -148,12 +140,14 @@ const Header = (props) => {
         setStateLeft({[anchor]: open})
     };
     const toggleDrawerRight = (anchor, open) => (event) => {
+        closeCart()
         setStateRight({[anchor]: open})
     };
     
     const toggleCloseDrawerLeft = (anchor, open) => {
         setStateRight({[anchor]: open})
     }
+
 
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={1000}>
@@ -167,7 +161,6 @@ const Header = (props) => {
                                     <li key={ item.id } style={{listStyle: "none"}}><Link onClick={item.index !== 'checkout' ? () => props.onClick(`/${item.index}`, '') : toggleDrawerRight('right', true)} className={classes.navListItem}>{ item.index === '' ? 'Home' : (item.icon ? item.icon : item.index) }</Link></li>
                                 )
                             })}
-                            {/* <li style={{listStyle: "none"}}><Link className={classes.navListItem}><ShoppingCartIcon/></Link></li> */}
                         </ul>
                     </nav>
                     <Button className={classes.hamburgerButton} style={{position: 'absolute', right: "0", color: '#222'}} onClick={toggleDrawer('left', true)}><MenuIcon/></Button>
@@ -178,10 +171,10 @@ const Header = (props) => {
                                     <li key={ item.id } style={{listStyle: "none"}}><Link onClick={toggleDrawer('left', false, item)} className={classes.navListItem}>{ item.index === '' ? 'Home' : (item.icon ? item.icon : item.index) }</Link></li>
                                 )
                             })}
-                            {/* <li style={{listStyle: "none"}}><Link className={classes.navListItem}><ShoppingCartIcon/></Link></li> */}
                         </ul>
                     </Drawer>
-                    <Drawer className={classes.checkoutDrawer} anchor={'right'} open={stateRight['right']} onClose={toggleDrawerRight('right', false)}>
+                    {console.log()}
+                    <Drawer className={classes.checkoutDrawer} anchor={'right'} open={stateRight['right'] || isCartOpen} onClose={toggleDrawerRight('right', false)}>
                         <Box display="flex" justifyContent="space-between" alignItems="center">
                             <Typography style={{color: 'white'}} variant="h6">Bag</Typography>
                             <IconButton style={{padding: "0"}} onClick={toggleDrawerRight('right', false)}>
@@ -191,27 +184,36 @@ const Header = (props) => {
                         <Divider style={{backgroundColor: 'white', margin: "1rem 0"}}/>
                         <Box height="100%" display="flex" flexDirection="column" justifyContent="space-between">
                             <ul className={classes.checkoutNavList}>
-                                {linkItemData.map(item =>{
+                                {checkout.lineItems && checkout.lineItems.map(item =>{
                                     return(
                                         <li key={item.id} style={{listStyle: "none", marginBottom: "1rem"}}>
                                             <Grid container spacing={3}>
                                                 <Grid item xs={4}>
                                                     <figure style={{height: "6rem", width: "100%", margin: "0", backgroundColor: "white"}}>
-                                                        <img width="100%" height="100%" style={{objectFit: "contain"}} src={item.url} alt=""/>
+                                                        <img width="100%" height="100%" style={{objectFit: "contain"}} src={item.variant.image.src} alt=""/>
                                                     </figure>
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize" }} variant="subtitle1">{item.titleProduct}</Typography>
+                                                    <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize" }} variant="subtitle1">{item.title}</Typography>
+                                                    <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize" }} variant="subtitle1">{item.quantity}</Typography>
+                                                    <Box display="flex">
+                                                        <IconButton style={{padding: "0"}} onClick={() => item.quantity === 1 ? removeItemToCheckout(item.id) : addItemToCheckout(item.variant.id, -1)}>
+                                                            <RemoveIcon style={{color: 'white'}}/>
+                                                        </IconButton>
+                                                        <IconButton style={{padding: "0"}} onClick={() => addItemToCheckout(item.variant.id, 1)}>
+                                                            <AddIcon style={{color: 'white'}}/>
+                                                        </IconButton>
+                                                    </Box>
                                                 </Grid>
                                                 <Grid item xs={4}>
-                                                    <Typography style={{color: 'white', fontSize: "0.9rem"}} variant="subtitle1">{item.priceProduct}</Typography>
+                                                    <Typography style={{color: 'white', fontSize: "0.9rem"}} variant="subtitle1">{item.variant.price}</Typography>
                                                 </Grid>
                                             </Grid>
                                         </li>
                                     )
                                 })}
                             </ul>
-                            <Button className={classes.checkoutButton} variant="contained">Checkout</Button>
+                            <Link style={{textDecoration: 'none'}} href={checkout.webUrl} target="_blank" rel="noopener noreferrer"><Button className={classes.checkoutButton} variant="contained">Checkout</Button></Link>
                         </Box>
                     </Drawer>
                 </Box>

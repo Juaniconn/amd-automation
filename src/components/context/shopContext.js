@@ -3,14 +3,17 @@ import Client from "shopify-buy";
 
 const ShopContext = React.createContext();
 
+const TOKEN_KEY = `${process.env.REACT_APP_GOOGLEMAPS_SHOPIFY_TOKEN}`
+
 const client = Client.buildClient({
-  storefrontAccessToken: "dd4d4dc146542ba7763305d71d1b3d38",
-  domain: "graphql.myshopify.com",
+  storefrontAccessToken: `${TOKEN_KEY}`,
+  domain: "amd-automation.myshopify.com",
 });
 
 class ShopProvider extends Component {
   state = {
     products: [],
+    collections: [],
     product: {},
     checkout: {},
     isCartOpen: false,
@@ -57,10 +60,25 @@ class ShopProvider extends Component {
       lineItemsToAdd
     );
     this.setState({ checkout: checkout });
-    console.log(checkout);
 
     this.openCart();
   };
+
+  removeItemToCheckout = async (variantId) => {
+    const lineItemIdsToRemove = [
+      variantId
+    ];
+    const checkout = await client.checkout.removeLineItems(
+      this.state.checkout.id,
+      lineItemIdsToRemove
+    );
+    this.setState({ checkout: checkout });
+  };
+
+  fetchAllCollections = async () => {
+    const collections = await client.collection.fetchAllWithProducts();
+    this.setState({ collections: collections });
+  }
 
   fetchAllProducts = async () => {
     const products = await client.product.fetchAll();
@@ -88,10 +106,12 @@ class ShopProvider extends Component {
         value={{
           ...this.state,
           fetchAllProducts: this.fetchAllProducts,
+          fetchAllCollections: this.fetchAllCollections,
           fetchProductWithId: this.fetchProductWithId,
           closeCart: this.closeCart,
           openCart: this.openCart,
           addItemToCheckout: this.addItemToCheckout,
+          removeItemToCheckout: this.removeItemToCheckout,
         }}
       >
         {this.props.children}

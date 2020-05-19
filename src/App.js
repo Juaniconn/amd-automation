@@ -4,6 +4,7 @@ import Landing from './components/pages/landing'
 import Layout from './components/pages/layout'
 import StoreIcon from '@material-ui/icons/Store';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShopProvider from './components/context/shopContext'
 
 // hero={1} services={2} video={3} sectors={4} statistics={5} projects={6} feedback={7} blog={8}
 
@@ -64,25 +65,28 @@ class App extends Component {
   }
 
     onClick(match, url){
-      this.props.history.push(`${match}${url}`) 
+      const siteUrl = (`${match}${url}`).toLowerCase().replace(/\s/g, '')
+      this.props.history.push(siteUrl) 
     }
     
     render(){
       return (
-        <Switch>
-          { pages.map(page =>{
-            return(
-              page.id === 1 ?
-                <Route key={page.id} exact path={`/${page.index}`}>
-                  { page.item(pages, page.index, this.onClick) }
-                </Route> 
-                : 
-                <Route key={page.id} path={`/${page.index}`}>
-                  { page.item(pages, page.index, this.onClick) }
-                </Route>
-              )
-          })}
-        </Switch>
+        <ShopProvider>
+          <Switch>
+            { pages.map(page =>{
+              return(
+                page.id === 1 ?
+                  <Route key={page.id} exact path={`/${page.index}`}>
+                    { page.item(pages, this.props.history.location.pathname, this.onClick) }
+                  </Route> 
+                  : 
+                  <Route key={page.id} path={`/${page.index}`}>
+                    { page.item(pages, this.props.history.location.pathname, this.onClick) }
+                  </Route>
+                )
+            })}
+          </Switch>
+        </ShopProvider>
     )
   }
 }
