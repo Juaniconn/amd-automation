@@ -52,7 +52,7 @@ class ShopProvider extends Component {
     const lineItemsToAdd = [
       {
         variantId,
-        quantity: parseInt(quantity, 10),
+        quantity: quantity,
       },
     ];
     const checkout = await client.checkout.addLineItems(

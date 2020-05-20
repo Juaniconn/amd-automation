@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, makeStyles, Box, Container, Drawer, Button, IconButton, Divider, Grid, Typography } from "@material-ui/core"
+import { Link, makeStyles, Box, Container, Drawer, Button, IconButton, Divider, Grid, Typography, Badge, ButtonGroup } from "@material-ui/core"
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { ShopContext } from "../context/shopContext"
@@ -148,6 +148,35 @@ const Header = (props) => {
         setStateRight({[anchor]: open})
     }
 
+    const BagItem = ({item}) => {
+        return(
+            <li style={{listStyle: "none", marginBottom: "1rem"}}>
+                <Grid container spacing={3}>
+                    <Grid item xs={4}>
+                        <Badge color="secondary" badgeContent={item.quantity}>
+                            <figure style={{height: "6rem", width: "100%", margin: "0", backgroundColor: "white"}}>
+                                <img width="100%" height="100%" style={{objectFit: "contain"}} src={item.variant.image.src} alt=""/>
+                            </figure>
+                        </Badge>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize", marginBottom: '1rem'}} variant="subtitle1">{item.title}</Typography>
+                        <ButtonGroup>
+                            <Button style={{borderColor: 'white'}} onClick={() => {item.quantity <= 1 ? removeItemToCheckout(item.id) : addItemToCheckout(item.variant.id, -1);}}>
+                                <RemoveIcon style={{color: 'white'}} fontSize="small" />
+                            </Button>
+                            <Button style={{borderColor: 'white'}} onClick={() => {addItemToCheckout(item.variant.id, 1)}}>
+                                <AddIcon style={{color: 'white'}} fontSize="small" />
+                            </Button>
+                        </ButtonGroup>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Typography style={{color: 'white', fontSize: "0.9rem"}} variant="subtitle1">${item.variant.price}</Typography>
+                    </Grid>
+                </Grid>
+            </li>
+        )
+    }
 
     return (
         <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={1000}>
@@ -173,7 +202,6 @@ const Header = (props) => {
                             })}
                         </ul>
                     </Drawer>
-                    {console.log()}
                     <Drawer className={classes.checkoutDrawer} anchor={'right'} open={stateRight['right'] || isCartOpen} onClose={toggleDrawerRight('right', false)}>
                         <Box display="flex" justifyContent="space-between" alignItems="center">
                             <Typography style={{color: 'white'}} variant="h6">Bag</Typography>
@@ -186,30 +214,7 @@ const Header = (props) => {
                             <ul className={classes.checkoutNavList}>
                                 {checkout.lineItems && checkout.lineItems.map(item =>{
                                     return(
-                                        <li key={item.id} style={{listStyle: "none", marginBottom: "1rem"}}>
-                                            <Grid container spacing={3}>
-                                                <Grid item xs={4}>
-                                                    <figure style={{height: "6rem", width: "100%", margin: "0", backgroundColor: "white"}}>
-                                                        <img width="100%" height="100%" style={{objectFit: "contain"}} src={item.variant.image.src} alt=""/>
-                                                    </figure>
-                                                </Grid>
-                                                <Grid item xs={4}>
-                                                    <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize" }} variant="subtitle1">{item.title}</Typography>
-                                                    <Typography style={{color: 'white', fontSize: "0.9rem", textTransform: "capitalize" }} variant="subtitle1">{item.quantity}</Typography>
-                                                    <Box display="flex">
-                                                        <IconButton style={{padding: "0"}} onClick={() => item.quantity === 1 ? removeItemToCheckout(item.id) : addItemToCheckout(item.variant.id, -1)}>
-                                                            <RemoveIcon style={{color: 'white'}}/>
-                                                        </IconButton>
-                                                        <IconButton style={{padding: "0"}} onClick={() => addItemToCheckout(item.variant.id, 1)}>
-                                                            <AddIcon style={{color: 'white'}}/>
-                                                        </IconButton>
-                                                    </Box>
-                                                </Grid>
-                                                <Grid item xs={4}>
-                                                    <Typography style={{color: 'white', fontSize: "0.9rem"}} variant="subtitle1">{item.variant.price}</Typography>
-                                                </Grid>
-                                            </Grid>
-                                        </li>
+                                        <BagItem key={item.id} item={item}/>
                                     )
                                 })}
                             </ul>
