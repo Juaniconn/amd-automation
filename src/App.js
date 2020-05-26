@@ -11,7 +11,7 @@ import ShopProvider from './components/context/shopContext'
 const pages = [
   {
     id: 1,
-    index: '',
+    index: 'amd-automation',
     item: (pageList, path, onClick) => {return(<Layout onClick={onClick} pageList={pageList} path={path} breadcrumbs={false}><Landing onClick={onClick} hero={1} services={2} video={3} sectors={4} statistics={5} projects={6} feedback={7} feedbackBackground={true} blog={8}/></Layout>)},
   },
   {
