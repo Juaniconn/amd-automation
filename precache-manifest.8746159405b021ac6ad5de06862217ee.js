@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d8df02dd0e17d91695e8d6ad7b274321",
+    "revision": "d5af641a02e97e0f794ee5c63acd00a2",
     "url": "/amd-automation/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/amd-automation/static/js/2.dad4f6f2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "35ef12d4b3c6c395d747",
-    "url": "/amd-automation/static/js/main.bc143fa2.chunk.js"
+    "revision": "10d7f37520d656c2b1dd",
+    "url": "/amd-automation/static/js/main.9ec94733.chunk.js"
   },
   {
     "revision": "7d624e2399c5dc602c95",
