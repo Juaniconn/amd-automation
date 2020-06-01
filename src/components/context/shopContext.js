@@ -3,7 +3,7 @@ import Client from "shopify-buy";
 
 const ShopContext = React.createContext();
 
-const TOKEN_KEY = `${process.env.REACT_APP_GOOGLEMAPS_SHOPIFY_TOKEN}`
+const TOKEN_KEY = `${process.env.REACT_APP_SHOPIFY_API_KEY}`
 
 const client = Client.buildClient({
   storefrontAccessToken: `${TOKEN_KEY}`,
