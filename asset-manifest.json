@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/amd-automation/static/js/main.2e2f6eec.chunk.js",
-    "main.js.map": "/amd-automation/static/js/main.2e2f6eec.chunk.js.map",
+    "main.js": "/amd-automation/static/js/main.ad8208b6.chunk.js",
+    "main.js.map": "/amd-automation/static/js/main.ad8208b6.chunk.js.map",
     "runtime-main.js": "/amd-automation/static/js/runtime-main.6ef3d0b2.js",
     "runtime-main.js.map": "/amd-automation/static/js/runtime-main.6ef3d0b2.js.map",
     "static/js/2.4de20642.chunk.js": "/amd-automation/static/js/2.4de20642.chunk.js",
     "static/js/2.4de20642.chunk.js.map": "/amd-automation/static/js/2.4de20642.chunk.js.map",
     "index.html": "/amd-automation/index.html",
-    "precache-manifest.65d441148782c7e8b2b95d8bf7630566.js": "/amd-automation/precache-manifest.65d441148782c7e8b2b95d8bf7630566.js",
+    "precache-manifest.d1b2243e23895dd9fd4cb673f93a9179.js": "/amd-automation/precache-manifest.d1b2243e23895dd9fd4cb673f93a9179.js",
     "service-worker.js": "/amd-automation/service-worker.js",
     "static/js/2.4de20642.chunk.js.LICENSE.txt": "/amd-automation/static/js/2.4de20642.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6ef3d0b2.js",
     "static/js/2.4de20642.chunk.js",
-    "static/js/main.2e2f6eec.chunk.js"
+    "static/js/main.ad8208b6.chunk.js"
   ]
 }
