@@ -1,18 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, makeStyles, Box, Container, Drawer, Button, IconButton, Divider, Grid, Typography, Badge, ButtonGroup } from "@material-ui/core"
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { ShopContext } from "../context/shopContext"
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import useDocumentScrollThrottled from './../atoms/useDocumentScrollThrottled'
 
 const useStyles = makeStyles((theme) => ({
     header: {
         backgroundColor: "white",
-        boxShadow: ".1rem .2rem 1rem 0rem rgba(0,0,0,0.25)",
         [theme.breakpoints.down('sm')]: {
             padding: "0.75rem 0",
         },
+        transition: "transform 0.3s ease",  
     },
     headerWrapper:{
         [theme.breakpoints.down('sm')]: {
@@ -120,6 +121,12 @@ const useStyles = makeStyles((theme) => ({
             width: "5rem",
         },
     },
+    shadow: {
+        boxShadow: '0 9px 9px -9px rgba(0, 0, 0, 0.3)',
+    },
+    hidden: {
+        transform: 'translateY(-110%)',
+    },
 }));
 
 
@@ -127,7 +134,27 @@ const Header = (props) => {
     const classes = useStyles();
     const [stateLeft, setStateLeft] = React.useState({left: false});
     const [stateRight, setStateRight] = React.useState({right: false});
+    const [shouldHideHeader, setShouldHideHeader] = useState(false);
+    const [shouldShowShadow, setShouldShowShadow] = useState(false);
     const { checkout, addItemToCheckout, removeItemToCheckout, isCartOpen, closeCart } = useContext(ShopContext)
+
+    const MINIMUM_SCROLL = 80;
+    const TIMEOUT_DELAY = 400;
+
+    const shadowStyle = shouldShowShadow ? classes.shadow : null;
+    const hiddenStyle = shouldHideHeader ? classes.hidden : null;
+
+    useDocumentScrollThrottled(callbackData => {
+        const { previousScrollTop, currentScrollTop } = callbackData;
+        const isScrolledDown = previousScrollTop < currentScrollTop;
+        const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
+
+        setShouldShowShadow(currentScrollTop > 2);
+
+        setTimeout(() => {
+        setShouldHideHeader(isScrolledDown && isMinimumScrolled);
+        }, TIMEOUT_DELAY);
+    });
 
     const toggleDrawer = (anchor, open, item) => (event) => {
         if (item !== undefined){
@@ -179,7 +206,7 @@ const Header = (props) => {
     }
 
     return (
-        <Box className={classes.header} position="sticky" top={0} left={0} right={0} zIndex={1000}>
+        <Box className={`${classes.header} ${shadowStyle} ${hiddenStyle}`} position="sticky" top={0} left={0} right={0} zIndex={1000}>
             <Container fixed>
                 <Box className={classes.headerWrapper} display="flex" justifyContent="space-between" alignItems="center">
                     <img className={classes.headerLogo} onClick={() => props.onClick('/amd-automation', '')} style={{cursor: 'pointer'}} src="https://raw.githubusercontent.com/ElJuanii00/AMD_Autoamtion/master/images_originals/amd_logo_transparent.png" alt=""/>
