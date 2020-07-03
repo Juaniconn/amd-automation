@@ -209,12 +209,12 @@ const Header = (props) => {
         <Box className={`${classes.header} ${shadowStyle} ${hiddenStyle}`} position="sticky" top={0} left={0} right={0} zIndex={1000}>
             <Container fixed>
                 <Box className={classes.headerWrapper} display="flex" justifyContent="space-between" alignItems="center">
-                    <img className={classes.headerLogo} onClick={() => props.onClick('/amd-automation', '')} style={{cursor: 'pointer'}} src="https://raw.githubusercontent.com/ElJuanii00/AMD_Autoamtion/master/images_originals/amd_logo_transparent.png" alt=""/>
+                    <img className={classes.headerLogo} onClick={() => props.onClick('/', '')} style={{cursor: 'pointer'}} src="https://raw.githubusercontent.com/ElJuanii00/AMD_Autoamtion/master/images_originals/amd_logo_transparent.png" alt=""/>
                     <nav className={classes.nav}>
                         <ul className={classes.navList}>
                             {props.pageList.map( item => {
                                 return (
-                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={item.index !== 'checkout' ? () => props.onClick(`/${item.index}`, '') : toggleDrawerRight('right', true)} className={classes.navListItem}>{ item.index === 'amd-automation' ? 'Home' : (item.icon ? item.icon : item.index) }</Link></li>
+                                    <li key={ item.id } style={{listStyle: "none"}}><Link onClick={item.index !== 'checkout' ? () => props.onClick(`/${item.index}`, '') : toggleDrawerRight('right', true)} className={classes.navListItem}>{ item.index === '' ? 'Home' : (item.icon ? item.icon : item.index) }</Link></li>
                                 )
                             })}
                         </ul>
